@@ -4,9 +4,18 @@ const jwtmiddle = require('../middleware/jwt');
 
 async function signIn(req, res) {
     try {
-        const token = req.cookie.user;
+        const token = req.cookies.user;
+        let userID = "";
+
+        if (token == undefined) {
+            return res.send('접근할수 없습니다.');
+        }
+        if (req.cookies.user !== undefined) {
+            console.log("로그인 정보 있음");
+            userID = req.cookies['user'];
+        }
         
-        res.send({ result: token });
+        res.render('/sign/in', { result: userID });
     } 
     catch (err) {
         console.log(err);
@@ -27,7 +36,7 @@ async function checkUser(req, res) {
         else {
             const parameters = {
                 "id": req.body.userID,
-                "pw": req.body.userPWD
+                "pw": req.body.userPW
             }
             if(parameters.id !== "cryduswjd" || parameters.pw !== "duswjd0619") {
                 res.send({ result: "아이디 혹은 비밀번호가 틀렸습니다."});
