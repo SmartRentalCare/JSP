@@ -5,11 +5,11 @@ require('dotenv').config();
 
 function jwtCreate(userData){
   return new Promise(function (resolve, reject) {
-    console.log(userData)
       jwt.sign({
+        type: 'JWT',
         user: userData,
       }, process.env.JWT_SECRET, {
-        expiresIn: '30m',
+        expiresIn: '5m',
         issuer: 'Conative',
       },function(err,token){
         if(err) reject(err)

@@ -5,6 +5,7 @@ const jwtmiddle = require('../middleware/jwt');
 async function signIn(req, res) {
     try {
         const token = req.cookies.user;
+        console.log(token)
         let userID = "";
 
         if (token == undefined) {
@@ -15,7 +16,8 @@ async function signIn(req, res) {
             userID = req.cookies['user'];
         }
         
-        res.render('/sign/in', { result: userID });
+        res.send({ result: userID });
+        // res.render('/sign/in', { result: userID });
     } 
     catch (err) {
         console.log(err);
@@ -43,11 +45,41 @@ async function checkUser(req, res) {
             }
             else {
                 const token = await jwtmiddle.jwtCreate(parameters.id);
-                res.cookie("user", token);
-                res.send("로그인하였습니다.");
+                res.cookie('user', token);
+                res.send({ result: token, msg: "로그인하였습니다." });
             }
         }
     } 
+    catch (err) {
+        console.log(err);
+        res.send("Failed");
+    }
+}
+
+//get
+async function revise_check(req, res) {
+    try {
+        const token = req.cookies.user;
+
+        const permission = await jwtmiddle.jwtCreate(token);
+        res.send({ result: permission });
+    }
+    catch (err) {
+        console.log(err);
+        res.send("Failed");
+    }
+}
+
+//post
+async function revise_check_post(req, res) {
+    try {
+        const token = req.cookies.user;
+
+        const permission = await jwtmiddle.jwtCerti(token);
+
+        if(permission != false) res.send({ result: permission });
+        else res.send({ result: "세션이 만료되었습니다. "});
+    }
     catch (err) {
         console.log(err);
         res.send("Failed");
@@ -68,5 +100,7 @@ async function logOut(req, res) {
 module.exports = {
     signIn,
     checkUser,
+    revise_check,
+    revise_check_post,
     logOut
 }
