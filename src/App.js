@@ -1,25 +1,18 @@
 import  LoginPage from './pages/LoginPage'
-import MainPage from './pages/MainPage'
-import { Component } from 'react'
-
+//import MainPage from './pages/MainPage'
 import {BrowserRouter,Routes, Route} from 'react-router-dom'
 
-class App extends Component {
-  
-  render() {
-    return(
-      <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/main" element ={<MainPage/>}/>
-          </Routes>
-        </BrowserRouter>
-        
-      </div>
-      
-    )
-  }
+function App() {
 
+  return (
+      <BrowserRouter>
+        <Routes>
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/" element={<LoginPage />} />
 
+        </Routes>
+      </BrowserRouter>
+  );
 }
+
+export default App;
