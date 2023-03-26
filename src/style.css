@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+*{
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.Title {
+    background-color: green;
+}
+.LoginForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 500px;
+    max-width: 1024px;
+    width: 90%;
+    background-color: rgba(124, 140, 173, 0.137);
+}
+
+.Input {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+.icon {
+    color: rgb(35, 126, 175);
+    font-size: 20px;
+}
+.SubTitle {
+    font-size: 30px;
+    font-weight: 300;
+    margin-top: 50px;
+}
+
+.InputId > input {
+    font-size: 25px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-left: 25px;
+    background-color: rgba(255,255,255,.1);
+    border: 1px solid rgba(157, 130, 130, 0.144);
+}
+.button {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 25px;
+
+}
+.button > button {
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    color:rgba(56, 61, 65, 0.779);
+    font-size: 20px;
+    font-weight: normal;
+    height: 50px;
+    width: 350px;
+    background-color: rgba(136, 148, 158, 0.299);
+}
