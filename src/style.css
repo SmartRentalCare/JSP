@@ -4,24 +4,29 @@
     text-align: center;
     font-family: 'Nunito Sans', sans-serif;
 }
-
+body{
+    background-color: rgba(172, 192, 239, 0.244);
+}
 .Title {
     background-color: green;
 }
 .LoginForm {
+    box-shadow: 0 0 40px rgb(206, 207, 208);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80%;
     max-width: 1024px;
-    width: 90%;
-    background-color: rgba(124, 140, 173, 0.137);
+    padding: 0 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(255, 255, 255, 0.563);
 }
 
 .Input {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -29,28 +34,35 @@
 .icon {
     color: rgb(35, 126, 175);
     font-size: 20px;
+
 }
 .SubTitle {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 300;
     margin-top: 50px;
+    position: absolute;
+    top: 24%;
+    left: 29%;
+    width: 43%;
+    max-width: 1024px;
+
 }
 
 .InputId > input {
-    font-size: 25px;
+    font-size: 20px;
+    padding: 20px; 
     outline: none;
     border: none;
-    border-radius: 30px;
-    margin-top: 30px;
-    margin-left: 25px;
+    margin-top: 10px;
+    margin-left: 15px;
     background-color: rgba(255,255,255,.1);
-    border: 1px solid rgba(157, 130, 130, 0.144);
+    border-bottom: 1px solid rgba(166, 164, 164, 0.4);
 }
 .button {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(0,-50%);
     margin-top: 25px;
 
 }
@@ -62,6 +74,6 @@
     font-size: 20px;
     font-weight: normal;
     height: 50px;
-    width: 350px;
+    width: 150px;
     background-color: rgba(136, 148, 158, 0.299);
 }

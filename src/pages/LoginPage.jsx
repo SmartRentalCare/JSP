@@ -45,27 +45,29 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h2 className='Title'>이미지</h2>
-      <form className="LoginForm" onSubmit={handleSubmit}>
-        <h3 className="SubTitle">스마트렌터케어</h3>
-        <div className="Input">
-          <div className="InputId">
-            <FaUser className='icon'/>
-            <input type="text" id="userID" value={userID} onChange={handleuserID} />
+    <body>
+      <div className="LoginPage">
+        <form className="LoginForm" onSubmit={handleSubmit}>
+          <h3 className="SubTitle">SmartLentalCare</h3>
+          <div className="Input">
+            <div className="InputId">
+              <FaUser className='icon'/>
+              <input type="text" id="userID" value={userID} onChange={handleuserID} />
+            </div>
+            <div className="InputId">
+              <FaLock className='icon' />
+              <input type="password" id="userPW" value={userPW} onChange={handleuserPW} />
+            </div>
+          
           </div>
-          <div className="InputId">
-            <FaLock className='icon' />
-            <input type="password" id="userPW" value={userPW} onChange={handleuserPW} />
+          <div className='button'>
+            <button type="submit">Login</button>
           </div>
-         
-        </div>
-        <div className='button'>
-          <button type="submit">로그인</button>
-        </div>
-        
-    </form>
-    </div>
+          
+        </form>
+      </div>
+    </body>
+    
     
   )
 }
