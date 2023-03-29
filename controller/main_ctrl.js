@@ -1,5 +1,6 @@
 'use strict';
 
+//main get
 async function main(req, res) {
     try {
         res.send({ result: "Server On" });
@@ -10,6 +11,7 @@ async function main(req, res) {
     }
 }
 
+//main post
 async function mainPost(req, res) {
     try {
         res.send({ result: "Servr On" });

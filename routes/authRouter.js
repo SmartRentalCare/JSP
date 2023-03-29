@@ -6,7 +6,7 @@ const auth_ctrl = require("../controller/auth_ctrl");
 router.get('/sign/in', auth_ctrl.signIn);
 router.post('/sign/in', auth_ctrl.checkUser);
 
-//토큰 만료 시 재발급
+//토큰 재발급
 router.get('/revise_check', auth_ctrl.revise_check);
 router.post('/revise_check', auth_ctrl.revise_check_post);
 
