@@ -37,18 +37,39 @@ body{
 
 }
 .SubTitle {
-    font-size: 35px;
+    font-family: "Playfair Display";
+    font-size: 40px;
     font-weight: 300;
     margin-top: 50px;
     position: absolute;
-    top: 24%;
-    left: 29%;
-    width: 43%;
-    max-width: 1024px;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%,0);
+    color:rgba(55, 70, 84, 0.773);
 
 }
+.SubTitle > span {
+    position: absolute;
+    margin-top: 5px;
+    font-size:15px; 
+    color:#444; 
+    word-spacing:1px;
+    font-weight:normal; 
+    letter-spacing:2px;
+    text-transform: uppercase; 
+    font-family:"Raleway", sans-serif; 
+    font-weight:500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
 
 .InputId > input {
+    text-align: start;
+    color: rgb(108, 106, 106);
     font-size: 20px;
     padding: 20px; 
     outline: none;

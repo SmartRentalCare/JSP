@@ -17,7 +17,7 @@ export default function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('/login', {
+    const response = await fetch('auth/sign/in', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userID, userPW }),
@@ -28,7 +28,7 @@ export default function LoginPage() {
       localStorage.setItem('access_token', data.access_token);
       localStorage.setItem('refresh_token', data.refresh_token);
       alert("로그인 성공");
-      const protectedResourceResponse = await fetch('/login', {
+      const protectedResourceResponse = await fetch('auth/receive_check',{
         headers: { Authorization: `Bearer ${data.access_token}` },
       })
   
@@ -48,7 +48,8 @@ export default function LoginPage() {
     <body>
       <div className="LoginPage">
         <form className="LoginForm" onSubmit={handleSubmit}>
-          <h3 className="SubTitle">SmartLentalCare</h3>
+          <h1 className="SubTitle">SmartLentalCare
+          <span>스마트렌터케어</span></h1>
           <div className="Input">
             <div className="InputId">
               <FaUser className='icon'/>
