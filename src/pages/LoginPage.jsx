@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import "../style.css"
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
   const [userID, setUserID] = useState('');
@@ -13,11 +15,33 @@ export default function LoginPage() {
   const handleuserPW = (event) => {
     setUSerPW(event.target.value);
   }
+  const handleSubmit = async () => {
+    axios
+        .post('http://localhost:3001/auth/sign/in', {
+          userID:userID,
+          userPW:userPW,
+        })
+        .then (response => {
+          console.log("success");
+          const{accessToken} = response.data;
+          axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          localStorage.setItem = ("accessToken", accessToken);
+          console.log(accessToken);
+          return true;
+          
+        })
+        .catch(error => {
+          console.log(error);
+          return false;
+        })
 
-  const handleSubmit = async (event) => {
+  }
+
+  
+  /*const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('auth/sign/in', {
+    const response = await fetch('', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userID, userPW }),
@@ -42,14 +66,13 @@ export default function LoginPage() {
       alert("로그인 실패");
     }
 
-  }
+  }*/
 
   return (
-    <body>
       <div className="LoginPage">
         <form className="LoginForm" onSubmit={handleSubmit}>
-          <h1 className="SubTitle">SmartLentalCare
-          <span>스마트렌터케어</span></h1>
+          <h1 className="SubTitle">LentalCare
+          <span>렌터케어</span></h1>
           <div className="Input">
             <div className="InputId">
               <FaUser className='icon'/>
@@ -62,12 +85,11 @@ export default function LoginPage() {
           
           </div>
           <div className='button'>
-            <button type="submit">Login</button>
+            <Link to ={"/main"}><button type="submit"onClick={handleSubmit}>Login</button></Link>
           </div>
           
         </form>
       </div>
-    </body>
     
     
   )
