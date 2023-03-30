@@ -5,7 +5,7 @@ const jwtmiddle = require('../middleware/jwt');
 async function signIn(req, res) {
     try {
         const token = req.cookies.user;
-        console.log(token)
+        console.log("token: ", token)
         let userID = "";
 
         if (token == undefined) {
@@ -16,8 +16,8 @@ async function signIn(req, res) {
             userID = req.cookies['user'];
         }
         
-        res.send({ result: userID });
-        // res.render('/sign/in', { result: userID });
+        // res.send({ result: userID });
+        res.render('/sign/in', { result: userID });
     } 
     catch (err) {
         console.log(err);

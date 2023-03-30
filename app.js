@@ -4,12 +4,21 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const cors = require('cors')
+
+const corsOptions = {
+  origin: '*',
+  credential: true,
+}
+
+app.use(cors(corsOptions))
+
 const cookieParser = require('cookie-parser');
 
 const mainRouter = require("./routes/mainRouter");
 const authRouter = require("./routes/authRouter");
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/front/src/pages'));
 app.set('view engine', 'ejs');
 
 app.use(express.json());

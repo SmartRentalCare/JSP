@@ -3,7 +3,8 @@
 //main get
 async function main(req, res) {
     try {
-        res.send({ result: "Server On" });
+        // res.send({ result: "Server On" });
+        res.render('LoginPage');
     } 
     catch (err) {
         console.log(err);
