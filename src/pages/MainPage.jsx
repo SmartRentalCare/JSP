@@ -1,11 +1,15 @@
-//import { useHistory } from 'react-router-dom';
 import React from "react";
+import Header from "../layout/header"
+import Main from "../layout/main"
+import Footer from "../layout/footer"
 import LogoutButton from '../components/Logoutbutton';
 export default function MainPage() {
 
   return (
     <div>
-      <h2>메인 페이지</h2>
+      <Header/>
+      <Main/>
+      <Footer/>
       <LogoutButton/>
     </div>
   )
