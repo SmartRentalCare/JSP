@@ -1,100 +1,137 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 
-*{
-    text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
+* {
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
 }
-body{
-    background-color: rgba(172, 192, 239, 0.244);
+body {
+  background-color: rgba(172, 192, 239, 0.244);
 }
+/* LoginPage.jsx */
 .Title {
-    background-color: green;
+  background-color: green;
 }
 .LoginForm {
-    box-shadow: 0 0 40px rgb(206, 207, 208);
-    position: absolute;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 80%;
-    max-width: 1024px;
-    padding: 0 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: rgba(255, 255, 255, 0.563);
+  box-shadow: 0 0 40px rgb(206, 207, 208);
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 1024px;
+  padding: 0 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.563);
 }
 
 .Input {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .icon {
-    color: rgb(35, 126, 175);
-    font-size: 20px;
-
+  color: rgb(35, 126, 175);
+  font-size: 20px;
 }
 .SubTitle {
-    font-family: "Playfair Display";
-    font-size: 40px;
-    font-weight: 300;
-    margin-top: 50px;
-    position: absolute;
-    top: 22%;
-    left: 50%;
-    transform: translate(-50%,0);
-    color:rgba(55, 70, 84, 0.773);
-
+  font-family: "Playfair Display";
+  font-size: 40px;
+  font-weight: 300;
+  margin-top: 50px;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: rgba(55, 70, 84, 0.773);
 }
 .SubTitle > span {
-    position: absolute;
-    margin-top: 5px;
-    font-size:15px; 
-    color:#444; 
-    word-spacing:1px;
-    font-weight:normal; 
-    letter-spacing:2px;
-    text-transform: uppercase; 
-    font-family:"Raleway", sans-serif; 
-    font-weight:500;
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: 27px 0;
-    grid-gap: 20px;
-    align-items: center;
+  position: absolute;
+  margin-top: 5px;
+  font-size: 15px;
+  color: #444;
+  word-spacing: 1px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
 }
-
 
 .InputId > input {
-    text-align: start;
-    color: rgb(108, 106, 106);
-    font-size: 20px;
-    padding: 20px; 
-    outline: none;
-    border: none;
-    margin-top: 10px;
-    margin-left: 15px;
-    background-color: rgba(255,255,255,.1);
-    border-bottom: 1px solid rgba(166, 164, 164, 0.4);
+  text-align: start;
+  color: rgb(108, 106, 106);
+  font-size: 20px;
+  padding: 20px;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+  margin-left: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(166, 164, 164, 0.4);
 }
 .button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(0,-50%);
-    margin-top: 25px;
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -50%);
+  margin-top: 25px;
 }
 .button > button {
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    color:rgba(56, 61, 65, 0.779);
-    font-size: 20px;
-    font-weight: normal;
-    height: 50px;
-    width: 150px;
-    background-color: rgba(136, 148, 158, 0.299);
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  color: rgba(56, 61, 65, 0.779);
+  font-size: 20px;
+  font-weight: normal;
+  height: 50px;
+  width: 150px;
+  background-color: rgba(136, 148, 158, 0.299);
+}
+
+/* header.jsx */
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.626);
+  font-size: 20px;
+}
+li {
+  margin-left: 20px;
+  font-size: 14px;
+  float: left;
+}
+.main_logo {
+  font-size: 50px;
+}
+.header {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 2048px;
+  padding: 0 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+.nav {
+  margin: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 1px solid rgba(128, 128, 128, 0.267);
+  border-bottom: 2px solid rgba(128, 128, 128, 0.267);
+}
+.logout_button {
+  float: right;
 }
