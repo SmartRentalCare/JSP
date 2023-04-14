@@ -3,6 +3,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import "../style.css";
 import axios from "axios";
 //import { Link } from "react-router-dom";
+const JWT_EXPIRRY_TIME = 300000;
 
 export default function LoginPage() {
   const [userID, setUserID] = useState("");
@@ -16,56 +17,45 @@ export default function LoginPage() {
     setUSerPW(event.target.value);
   };
 
-  const instance = axios.create({
-    baseURL: "https://localhost:3001/",
-    timeout: 5000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const handleSubmit = async (userID, userPW) => {
-    const body = {
-      userID,
-      userPW,
-    };
-
-    try {
-      const response = await instance.post("/auth/sign/in", body);
-      const { accessToken, refreshToken } = response.data;
-      localStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("refreshToken", refreshToken);
-      return response;
-    } catch (error) {
-      console.log("error");
-    }
-  };
-  /*const handleSubmit = (userID, userPW) => {
-    const data = {
-      userID,
-      userPW,
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     axios
-      .post("http://localhost:3001/auth/sign/in", data)
-      .then((response) => {
-        const accessToken = localStorage.getItem("access_token");
-        if (accessToken) {
-          response.headers.Authorization = `Bearer ${accessToken}`;
-        }
-        return response;
-        //JWT 토큰을 로컬 스토리지에 저장
+      .post("http://localhost:3001/auth/sign/in", {
+        userID: userID,
+        userPW: userPW,
       })
+      .then(onLoginSuccess)
       .catch((error) => {
-        console.log("로그인실패");
+        console.log(error);
       });
-  };*/
+  };
+
+  const onSilentRefresh = () => {
+    axios
+      .post("http://localhost:3001/auth/revise_check")
+      .then(onLoginSuccess)
+      .catch((error) => {
+        // ... 로그인 실패 처리
+      });
+  };
+
+  const onLoginSuccess = (response) => {
+    const { accessToken } = response.data;
+    localStorage.setItem("token", accessToken);
+    window.location.href = "/main";
+    // accessToken 설정
+    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+
+    // accessToken 만료하기 1분 전에 로그인 연장
+    setTimeout(onSilentRefresh, JWT_EXPIRRY_TIME);
+  };
 
   return (
     <div className="LoginPage">
       <form className="LoginForm" onSubmit={handleSubmit}>
         <h1 className="SubTitle">
-          LentalCare
-          <span>렌터케어</span>
+          Rent Care
+          <span>렌트케어</span>
         </h1>
         <div className="Input">
           <div className="InputId">
