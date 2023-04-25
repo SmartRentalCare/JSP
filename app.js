@@ -3,20 +3,20 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
-const cors = require('cors')
+const cors = require('cors');
 
 const corsOptions = {
   origin: '*',
   credential: true,
 }
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 const cookieParser = require('cookie-parser');
 
 const mainRouter = require("./routes/mainRouter");
 const authRouter = require("./routes/authRouter");
+const listRouter = require("./routes/listRouter");
 
 app.set('views', path.join(__dirname, '/front/src/pages'));
 app.set('view engine', 'ejs');
@@ -27,5 +27,6 @@ app.use(cookieParser());
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
+app.use("/list", listRouter);
 
 module.exports = app;

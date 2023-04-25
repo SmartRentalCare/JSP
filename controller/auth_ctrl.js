@@ -1,6 +1,7 @@
 'use strict';
 
 const jwtmiddle = require('../middleware/jwt');
+const authDAO = require('../model/authDAO');
 
 async function signIn(req, res) {
     try {
@@ -15,7 +16,6 @@ async function signIn(req, res) {
             console.log("로그인 정보 있음");
             userID = req.cookies['user'];
         }
-        
         // res.send({ result: userID });
         res.render('/sign/in', { result: userID });
     } 
@@ -30,26 +30,28 @@ async function checkUser(req, res) {
         const special_pattern = /[` ~!@#$%^&*|\\\'\";:\/?]/gi;
 
         if (special_pattern.test(req.body.user) ||
-            req.body.userID == undefined || req.body.userPW == undefined ||
-            req.body.userID == " " || req.body.userPW == " " ||
-            req.body.userID == null || req.body.userPW == null) {
+            req.body.adminID == undefined || req.body.adminPW == undefined ||
+            req.body.adminID == " " || req.body.adminPW == " " ||
+            req.body.adminID == null || req.body.adminPW == null) {
             res.send({ result: "잘못된 값을 입력하였습니다." });
         } 
         else {
-            const parameters = {
-                "id": req.body.userID,
-                "pw": req.body.userPW
-            }
-            if(parameters.id !== "cryduswjd" || parameters.pw !== "duswjd0619") {
-                res.send({ result: "아이디 혹은 비밀번호가 틀렸습니다."});
+            const id = req.body.adminID;
+            const pw = req.body.adminPW;
+
+            const parameters = { id, pw };
+
+            const db_data = await authDAO.userInfo(parameters);
+
+            if(db_data) {
+                const accessToken = await jwtmiddle.jwtCreate(parameters.id);
+                return res.send ({ accessToken });
             }
             else {
-                const token = await jwtmiddle.jwtCreate(parameters.id);
-                res.cookie('user', token);
-                res.send({ result: token, msg: "로그인하였습니다." });
+                res.send({ result: "아이디 혹은 비밀번호가 틀렸습니다."});
             }
         }
-    } 
+    }
     catch (err) {
         console.log(err);
         res.send("Failed");
