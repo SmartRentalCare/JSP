@@ -6,23 +6,23 @@ import axios from "axios";
 const JWT_EXPIRRY_TIME = 300000;
 
 export default function LoginPage() {
-  const [userID, setUserID] = useState("");
-  const [userPW, setUSerPW] = useState("");
+  const [adminID, setadminID] = useState("");
+  const [adminPW, setadminPW] = useState("");
 
-  const handleuserID = (event) => {
-    setUserID(event.target.value);
+  const handleadminID = (event) => {
+    setadminID(event.target.value);
   };
 
-  const handleuserPW = (event) => {
-    setUSerPW(event.target.value);
+  const handleadminPW = (event) => {
+    setadminPW(event.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/auth/sign/in", {
-        userID: userID,
-        userPW: userPW,
+        adminID: adminID,
+        adminPW: adminPW,
       })
       .then(onLoginSuccess)
       .catch((error) => {
@@ -63,8 +63,8 @@ export default function LoginPage() {
             <input
               type="text"
               id="userID"
-              value={userID}
-              onChange={handleuserID}
+              value={adminID}
+              onChange={handleadminID}
             />
           </div>
           <div className="InputId">
@@ -72,8 +72,8 @@ export default function LoginPage() {
             <input
               type="password"
               id="userPW"
-              value={userPW}
-              onChange={handleuserPW}
+              value={adminPW}
+              onChange={handleadminPW}
             />
           </div>
         </div>

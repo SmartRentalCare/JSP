@@ -11,7 +11,6 @@ body {
 
 .LoginForm {
   box-shadow: 0 0 40px rgb(206, 207, 208);
-
   position: absolute;
   top: 0;
   bottom: 0;
@@ -116,7 +115,8 @@ li {
   top: 0;
   bottom: 0;
   width: 100%;
-  max-width: 1800px;
+  color: rgb(145, 189, 216);
+  max-width: 1500px;
   padding: 0 20px;
   left: 50%;
   transform: translate(-50%, 0);
@@ -145,27 +145,28 @@ li {
   top: 20%;
   bottom: 0;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1500px;
   padding: 0 20px;
   left: 50%;
   transform: translate(-50%, 0);
 }
 .main_section {
-  border: 1px solid black;
+  border: 1px solid rgba(138, 138, 138, 0.322);
   position: absolute;
-  left: 2%;
+  left: 4%;
   top: 3%;
   bottom: 0;
-  width: 65%;
-  max-width: 1800px;
+  width: 66%;
+  max-width: 1500px;
   padding: 0 20px;
   text-align: center;
 }
 .search_box {
+  top: 50%;
   margin-top: 12px;
   width: 70%;
   left: 15%;
-  max-width: 1800px;
+  max-width: 1500px;
   position: absolute;
   height: 150px;
 }
@@ -175,7 +176,7 @@ li {
   border-bottom: 2px solid rgba(128, 128, 128, 0.267);
   font-size: 20px;
   margin-top: 30px;
-  width: 400px;
+  width: 70%;
   height: 50px;
   color: rgba(56, 61, 65, 0.779);
 }
@@ -189,14 +190,14 @@ li {
 
 .main_article {
   position: absolute;
-  right: 2%;
+  right: 4%;
   top: 3%;
   bottom: 0;
-  width: 25%;
-  max-width: 1800px;
+  width: 20%;
+  max-width: 1500px;
   padding: 0 0px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid rgba(138, 138, 138, 0.322);
 }
 .search-icon {
   font-size: 27px;
@@ -208,24 +209,14 @@ li {
 .users {
   position: absolute;
   top: 0%;
-  bottom: 70%;
+  bottom: 80%;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1500px;
   padding: 0 0px;
   text-align: center;
   border: 1px solid black;
 }
-.users_info {
-  background-color: red;
-  margin: 5px;
-  display: flex;
-}
-.users_img {
-  padding: 10px;
-  width: 120px;
-  height: 150px;
-  background-color: blue;
-}
+
 .users_img > img {
   margin-top: 8px;
   width: 100px;
@@ -234,12 +225,83 @@ li {
 .info {
   background-color: blue;
 }
-.users_number {
-  font-size: 35px;
-}
 .subtitle {
   padding-top: 10px;
   padding-bottom: 30px;
   margin-bottom: 5px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.267);
+}
+.users_name {
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(56, 61, 65, 0.39);
+}
+.bord {
+  margin-top: 12px;
+  width: 75%;
+  left: 12%;
+  max-width: 1500px;
+  position: absolute;
+  bottom: 79%;
+  top: 5%;
+}
+span {
+  font-size: 15px;
+  margin-left: 8px;
+  padding: 5px;
+}
+.id > input {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: rgb(108, 106, 106);
+  outline: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(166, 164, 164, 0.4);
+}
+
+form {
+  display: block;
+}
+.bord_button {
+  text-align: end;
+  margin-top: 10px;
+}
+.bord_button > button {
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 30px;
+  font-weight: normal;
+  height: 30px;
+  width: 90px;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(145, 189, 216);
+}
+.list {
+  top: 30%;
+  margin-top: 12px;
+  width: 75%;
+  left: 12%;
+  max-width: 1500px;
+  position: absolute;
+  bottom: 79%;
+}
+/* List.jsx */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgba(166, 164, 164, 0.6);
+}
+th {
+  font-weight: bold;
+  background-color: rgba(200, 225, 240, 0.595);
+  border: 1px solid rgba(166, 164, 164, 0.6);
+}
+
+td {
+  border: 1px solid rgba(166, 164, 164, 0.6);
 }
