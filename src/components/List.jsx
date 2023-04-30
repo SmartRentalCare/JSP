@@ -4,62 +4,123 @@ import "../style.css";
 
 export default function List() {
   const [posts, setPosts] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/list/carInfo")
+      .get(`http://localhost:3001/search?page=${currentPage}&limit=10`) // 현재 페이지와 게시글 개수 제한
       .then((response) => {
-        setPosts(response.data);
+        setPosts(response.data.posts);
+        setTotalPages(response.data.totalPages);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [currentPage]);
 
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>선택</th>
-          <th>회원이름</th>
-          <th>차량번호</th>
-        </tr>
-      </thead>
-      <tbody>
-        {/*리스트 예시*/}
-        <tr>
-          <td>
-            <input type="checkbox"></input>
-          </td>
-          <td>1</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox"></input>
-          </td>
-          <td>1</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox"></input>
-          </td>
-          <td>1</td>
-          <td>2</td>
-        </tr>
+    <div className="card_list">
+      <div className="card">
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+        <div class="item item_1">
+          <div className="info">
+            <p>김채영</p>
+            <p>1234</p>
+            <p>white</p>
+            <p>2023.02.03</p>
+          </div>
+        </div>
+
         {posts.map((post) => {
-          <tr>
-            <td>
-              <input type="checkbox"></input>
-            </td>
-            <div key={post.user}>
-              <td>{post.user}</td>
-              <td>{post.carInfo}</td>
+          <div key={post.user} class="item item_1">
+            <div className="info">
+              <p>{post.user}</p>
+              <p>{post.carNum}</p>
+              <p>{post.carInfo}</p>
+              <p>{post.date}</p>
             </div>
-          </tr>;
+          </div>;
         })}
-      </tbody>
-    </table>
+      </div>
+      <div>
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          이전 페이지
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          다음 페이지
+        </button>
+      </div>
+    </div>
   );
 }

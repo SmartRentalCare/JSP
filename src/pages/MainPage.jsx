@@ -1,94 +1,77 @@
 import React, { useState } from "react";
 import Header from "../layout/header";
 import Footer from "../layout/footer";
-//import { FaSearch } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import LogoutButton from "../components/Logoutbutton";
 import axios from "axios";
 import List from "../components/List";
-
+import Modal from "../components/Modal";
 //import { useSelector } from "react-redux";
 export default function MainPage() {
-  const [user, setUser] = useState("");
-  const [carInfo, setCarInfo] = useState("");
-
-  {
-    /*useEffect(() => {
-    axios
-      .get("http://localhost:3001/list/carInfo")
-      .then((response) => {
-        setPosts(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);*/
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:3001/list/carInfo", { user, carInfo })
-      .then((response) => {
-        console.log(response.data);
-        setUser("");
-        setCarInfo("");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
   //const userID = useSelector((state) => state.userID);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/search", {
+        keyword: searchKeyword,
+      });
+      setSearchResult(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div>
-      <Header />
+      <div className="main_header">
+        <Header />
+      </div>
+
       <div className="main">
         <div className="main_section">
-          <div className="bord">
-            <h1>차량등록</h1>
-            <form onSubmit={handleSubmit}>
-              <div className="id">
-                <span>회원</span>
-                <input
-                  type="text"
-                  value={user}
-                  onChange={(e) => setUser(e.target.value)}
-                />
-                <span>차량</span>
-                <input
-                  type="text"
-                  value={carInfo}
-                  onChange={(e) => setCarInfo(e.target.value)}
-                />
-              </div>
-              <div className="bord_button">
-                <button type="submit">등록</button>
-              </div>
-            </form>
-            {/*<ul>
-              {posts.map((post) => (
-                <li key={post.user}>
-                  <h2>{post.user}</h2>
-                  <p>{post.carInfo}</p>
-                </li>
-              ))}
-            </ul>*/}
-          </div>
           <div className="list">
             <List />
           </div>
-          {/*<div className="search_box">
-            <h1 className="subtitle">차량검색</h1>
-            <input
-              type="text"
-              placeholder="차량번호(4자리)+고객이름+렌트일수"
-            />
-            <button>
-              <FaSearch className="search-icon" />
-            </button>
-            <p className="notion">* 정해진 형식에따라 차량을 검색해주세요 *</p>
+          <div className="search_box">
+            <h1 className="subtitle">차량관리</h1>
+            <div className="input_box">
+              <input
+                type="text"
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+                placeholder="차량번호(4자리)"
+              />
+              <button onClick={handleSearch}>
+                <FaCheck className="search-icon" />
+              </button>
+              {searchResult.length > 0 ? (
+                <ul>
+                  {searchResult.map((item) => (
+                    <li key={item.carNum} onClick={() => setSelectedItem(item)}>
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div>검색 결과가 없습니다.</div>
+              )}
+              {selectedItem && (
+                <Modal onClose={() => setSelectedItem(null)}>
+                  <h2>{selectedItem.user}</h2>
+                  <p>{selectedItem.carNum}</p>
+                  <p>{selectedItem.carInfo}</p>
+                  <p>{selectedItem.date}</p>
+                  <p>{selectedItem.drink}</p>
+                  <p>{selectedItem.smoke}</p>
+                  <p>{selectedItem.boom}</p>
+                </Modal>
+              )}
+            </div>
           </div>
-        */}
         </div>
+
         <div className="main_article">
           <div className="users">
             <div className="users_name">
