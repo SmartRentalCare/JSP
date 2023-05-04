@@ -9,7 +9,7 @@ function jwtCreate(userData){
         type: 'JWT',
         user: userData,
       }, process.env.JWT_SECRET, {
-        expiresIn: '5m',
+        expiresIn: '1h',
         issuer: 'Conative',
       },function(err,token){
         if(err) reject(err)
