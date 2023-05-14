@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Header from "../layout/header";
-import Footer from "../layout/footer";
+import Header from "./header";
+import Footer from "./footer";
 import { FaCheck } from "react-icons/fa";
-import LogoutButton from "../components/Logoutbutton";
+import LogoutButton from "./Logoutbutton";
 import axios from "axios";
-import List from "../components/List";
-import Modal from "../components/Modal";
+import List from "./List";
+import Modal from "./Modal";
+import MovePage from "./MovePage";
 //import { useSelector } from "react-redux";
 export default function MainPage() {
   //const userID = useSelector((state) => state.userID);
@@ -80,10 +81,15 @@ export default function MainPage() {
             <div className="logout">
               <LogoutButton />
             </div>
+            <div className="move">
+              <MovePage />
+            </div>
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

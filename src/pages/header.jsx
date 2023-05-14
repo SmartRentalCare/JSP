@@ -8,8 +8,10 @@ export default function header() {
     <div className="header">
       <header>
         <h1 className="main_logo">
-          Rent Care
-          <h2 className="logo_sub">렌트케어</h2>
+          <a href="/main">Rent Care</a>
+          <h2 className="logo_sub">
+            <a href="/main">렌트케어</a>
+          </h2>
         </h1>
 
         {/*<nav className="nav">
