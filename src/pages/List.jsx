@@ -33,7 +33,8 @@ export default function List() {
       date: "20230103",
     },
   ]);
-
+  {
+    /*
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,6 +47,18 @@ export default function List() {
     };
 
     fetchData();
+  }, []);
+*/
+  }
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/posts")
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
