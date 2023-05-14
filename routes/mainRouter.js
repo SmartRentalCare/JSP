@@ -4,6 +4,6 @@ const main_ctrl = require("../controller/main_ctrl");
 
 //main
 router.get('/main', main_ctrl.main);
-router.post('/main', main_ctrl.mainPost);
+router.post('/main/search', main_ctrl.mainPost);
 
 module.exports = router;
