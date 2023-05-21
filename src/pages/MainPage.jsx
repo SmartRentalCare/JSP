@@ -5,14 +5,13 @@ import { FaCheck } from "react-icons/fa";
 import LogoutButton from "./Logoutbutton";
 import axios from "axios";
 import List from "./List";
-import Modal from "./Modal";
+
 import MovePage from "./MovePage";
 //import { useSelector } from "react-redux";
 export default function MainPage() {
   //const userID = useSelector((state) => state.userID);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
 
   const handleSearch = async () => {
     try {
@@ -47,27 +46,24 @@ export default function MainPage() {
               <button onClick={handleSearch}>
                 <FaCheck className="search-icon" />
               </button>
+
               {searchResult.length > 0 ? (
                 <ul>
-                  {searchResult.map((item) => (
-                    <li key={item.carNum} onClick={() => setSelectedItem(item)}>
-                      {item.name}
-                    </li>
-                  ))}
+                  {searchResult &&
+                    searchResult.map((post) => (
+                      <div key={post.id} className="searchKey">
+                        <div className="search_element">
+                          <p>{post.user}</p>
+                          <p>{post.carInfo}</p>
+                          <p>{post.smoke}</p>
+                          <p>{post.drink}</p>
+                          <p>{post.conflict}</p>
+                        </div>
+                      </div>
+                    ))}
                 </ul>
               ) : (
                 <div>검색 결과가 없습니다.</div>
-              )}
-              {selectedItem && (
-                <Modal onClose={() => setSelectedItem(null)}>
-                  <h2>{selectedItem.user}</h2>
-                  <p>{selectedItem.carNum}</p>
-                  <p>{selectedItem.carInfo}</p>
-                  <p>{selectedItem.date}</p>
-                  <p>{selectedItem.drink}</p>
-                  <p>{selectedItem.smoke}</p>
-                  <p>{selectedItem.boom}</p>
-                </Modal>
               )}
             </div>
           </div>

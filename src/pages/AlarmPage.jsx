@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import LogoutButton from "./Logoutbutton";
 import axios from "axios";
 
 export default function MainPage() {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/alarm")
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <div>
       <div className="main_header">
@@ -15,36 +26,18 @@ export default function MainPage() {
         <div className="main_section">
           <div className="car_section">
             <h2 className="subtitle">알림</h2>
-            <div className="car_list">
-              <div className="car_element">
-                <p>2035</p>
-                <p>김채영</p>
-                <p>20220105</p>
-                <p>smoke</p>
-                <p>5%</p>
-              </div>
-              <div className="car_element">
-                <p>2035</p>
-                <p>김채영</p>
-                <p>20220105</p>
-                <p>smoke</p>
-                <p>5%</p>
-              </div>
-              <div className="car_element">
-                <p>2035</p>
-                <p>김채영</p>
-                <p>20220105</p>
-                <p>smoke</p>
-                <p>5%</p>
-              </div>
-              <div className="car_element">
-                <p>2035</p>
-                <p>김채영</p>
-                <p>20220105</p>
-                <p>smoke</p>
-                <p>5%</p>
-              </div>
-            </div>
+            {posts &&
+              posts.map((post) => (
+                <div key={post.id} className="car_list">
+                  <div className="car_element">
+                    <p>{post.user}</p> {/*고객이름*/}
+                    <p>{post.carInfo}</p> {/*차량번호*/}
+                    <p>{post.date}</p> {/*알림발생날짜*/}
+                    <p>{post.kind}</p> {/*알림종류*/}
+                    <p>{post.density}</p> {/*농도*/}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
 

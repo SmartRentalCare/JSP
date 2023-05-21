@@ -3,56 +3,11 @@ import axios from "axios";
 import "../style.css";
 
 export default function List() {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      username: "김채영",
-      carNum: "1234",
-      carInfo: "white",
-      date: "20230103",
-    },
-    {
-      id: 2,
-      username: "김연정",
-      carNum: "1234",
-      carInfo: "white",
-      date: "20230103",
-    },
-    {
-      id: 2,
-      username: "김연정",
-      carNum: "1234",
-      carInfo: "white",
-      date: "20230103",
-    },
-    {
-      id: 2,
-      username: "김연정",
-      carNum: "1234",
-      carInfo: "white",
-      date: "20230103",
-    },
-  ]);
-  {
-    /*
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const db_data = await axios("http://localhost:3001/posts");
-        setPosts(db_data.data);
-        console.log(db_data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const [posts, setPosts] = useState([]);
 
-    fetchData();
-  }, []);
-*/
-  }
   useEffect(() => {
     axios
-      .post("http://localhost:3001/posts")
+      .get("http://localhost:3001/main")
       .then((response) => {
         setPosts(response.data);
       })
@@ -69,10 +24,14 @@ export default function List() {
             posts.map((post) => (
               <div key={post.id} className="item item_1">
                 <div className="info">
-                  <p>{post.username}</p>
-                  <p>{post.carNum}</p>
+                  <p>{post.user}</p>
+                  {/*고객이름*/}
                   <p>{post.carInfo}</p>
+                  {/*차량번호*/}
+                  <p>{post.carColor}</p>
+                  {/*차량 색*/}
                   <p>{post.date}</p>
+                  {/*차량 빌린 날짜*/}
                 </div>
               </div>
             ))}

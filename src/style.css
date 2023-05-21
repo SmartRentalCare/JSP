@@ -180,9 +180,7 @@ li {
 .subtitle {
   font-size: 25px;
 }
-.input_box {
-  padding-left: 40px;
-}
+
 .input_box > input {
   border: none;
   outline: none;
@@ -292,11 +290,25 @@ form {
   max-width: 1500px;
   position: absolute;
   bottom: 79%;
-  background-color: red;
 }
 .move {
   margin-top: 20%;
 }
+.search_element {
+  margin-top: 12px;
+  width: 70%;
+  left: 15%;
+  max-width: 1500px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+.searchKey {
+  margin-bottom: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* List.jsx */
 table {
   width: 100%;
@@ -344,15 +356,7 @@ td {
 }
 
 /* AlarmPage.jsx */
-.car_list {
-  top: 70%;
-  margin-top: 12px;
-  width: 70%;
-  left: 14%;
-  max-width: 1500px;
-  position: absolute;
-  height: 150px;
-}
+
 .car_element {
   border-radius: 10px;
   border: 1px solid rgba(145, 144, 144, 0.64);
