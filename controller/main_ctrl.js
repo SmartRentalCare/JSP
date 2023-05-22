@@ -52,8 +52,7 @@ async function main(req, res) {
 //main post
 async function mainPost(req, res) {
     try {
-        const parameters = req.body.searchKeyword;
-        console.log(parameters)
+        const parameters = req.body.keyword;
 
         const db_data = await mainDAO.searchResult(parameters);
         console.log(db_data);

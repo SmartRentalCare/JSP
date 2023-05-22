@@ -4,11 +4,11 @@ const mysql = require('mysql');
 require('dotenv').config({ path: '.env' });
 
 const db = mysql.createConnection({
-    host: '127.0.0.1',
+    host: 'smartrentalcare.c02oobpyxopx.ap-northeast-2.rds.amazonaws.com',
     port: '3306',
     user: 'root',
-    password: 'Duswjd123!',
-    database: 'GraduationProject',
+    password: 'duswjd0619',
+    database: 'smartRentalCare',
     multipleStatements: true
 })
 

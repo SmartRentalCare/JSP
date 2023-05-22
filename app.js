@@ -16,6 +16,7 @@ const cookieParser = require('cookie-parser');
 
 const authRouter = require("./routes/authRouter");
 const mainRouter = require("./routes/mainRouter");
+const arduinoRouter = require("./routes/arduinoRouter");
 
 app.set('views', path.join(__dirname, '../front/src/pages'));
 app.set('view engine', 'ejs');
@@ -26,5 +27,7 @@ app.use(cookieParser());
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
+
+app.use("/arduino", arduinoRouter);
 
 module.exports = app;
