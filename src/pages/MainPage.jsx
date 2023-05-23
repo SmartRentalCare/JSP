@@ -15,10 +15,11 @@ export default function MainPage() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/search", {
+      const response = await axios.post("http://localhost:3001/main/search", {
         keyword: searchKeyword,
       });
       setSearchResult(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -49,18 +50,15 @@ export default function MainPage() {
 
               {searchResult.length > 0 ? (
                 <ul>
-                  {searchResult &&
-                    searchResult.map((post) => (
-                      <div key={post.id} className="searchKey">
-                        <div className="search_element">
-                          <p>{post.user}</p>
-                          <p>{post.carInfo}</p>
-                          <p>{post.smoke}</p>
-                          <p>{post.drink}</p>
-                          <p>{post.conflict}</p>
-                        </div>
+                  {searchResult.map((post) => (
+                    <div key={post.id} className="searchKey">
+                      <div className="search_element">
+                        <p>{post.user}</p>
+                        <p>{post.carNum}</p>
+                        <p>{post.rentDay}</p>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </ul>
               ) : (
                 <div>검색 결과가 없습니다.</div>

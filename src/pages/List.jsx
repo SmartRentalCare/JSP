@@ -26,11 +26,9 @@ export default function List() {
                 <div className="info">
                   <p>{post.user}</p>
                   {/*고객이름*/}
-                  <p>{post.carInfo}</p>
+                  <p>{post.carNum}</p>
                   {/*차량번호*/}
-                  <p>{post.carColor}</p>
-                  {/*차량 색*/}
-                  <p>{post.date}</p>
+                  <p>{post.rentDay}</p>
                   {/*차량 빌린 날짜*/}
                 </div>
               </div>
