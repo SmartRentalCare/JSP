@@ -210,6 +210,9 @@ li {
   text-align: center;
   border: 1px solid rgba(138, 138, 138, 0.322);
 }
+.users_element {
+  vertical-align: start;
+}
 .search-icon {
   font-size: 20px;
   color: rgb(153, 200, 229);
@@ -381,4 +384,43 @@ td {
 .warningtext {
   font-size: 15px;
   color: rgba(255, 0, 0, 0.723);
+}
+
+/* Client.jsx */
+.client_input {
+  margin-top: 10%;
+}
+.client_element {
+  padding: 5%;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 138, 138, 0.322);
+}
+.input_client {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.input_client > input {
+  outline-style: none;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  text-align: start;
+  border-bottom: 1px solid rgba(138, 138, 138, 0.322);
+}
+.client_button {
+  margin-top: 6%;
+  text-align: end;
+}
+.client_submit {
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  width: 80px;
+  border-radius: 15px;
+  background-color: rgba(153, 200, 229, 0.441);
+}
+/*Click.jsx */
+.submittext {
+  color: black;
 }

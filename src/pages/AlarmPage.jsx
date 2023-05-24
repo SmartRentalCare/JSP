@@ -3,6 +3,7 @@ import Header from "./header";
 import Footer from "./footer";
 import LogoutButton from "./Logoutbutton";
 import axios from "axios";
+import Click from "./Click";
 
 export default function MainPage() {
   const [posts, setPosts] = useState([]);
@@ -44,10 +45,15 @@ export default function MainPage() {
         <div className="main_article">
           <div className="users">
             <div className="users_name">
-              <p className="name">react-redux님, 안녕하세요!</p>
+              <p className="name">회원님, 안녕하세요!</p>
             </div>
-            <div className="logout">
-              <LogoutButton />
+            <div className="users_element">
+              <div className="logout">
+                <LogoutButton />
+              </div>
+              <div className="move">
+                <Click />
+              </div>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import axios from "axios";
 import List from "./List";
 
 import MovePage from "./MovePage";
+import Click from "./Click";
 //import { useSelector } from "react-redux";
 export default function MainPage() {
   //const userID = useSelector((state) => state.userID);
@@ -70,13 +71,18 @@ export default function MainPage() {
         <div className="main_article">
           <div className="users">
             <div className="users_name">
-              <p className="name">react-redux님, 안녕하세요!</p>
+              <p className="name">회원님, 안녕하세요!</p>
             </div>
-            <div className="logout">
-              <LogoutButton />
-            </div>
-            <div className="move">
-              <MovePage />
+            <div className="users_element">
+              <div className="logout">
+                <LogoutButton />
+              </div>
+              <div className="move">
+                <MovePage />
+              </div>
+              <div className="move">
+                <Click />
+              </div>
             </div>
           </div>
         </div>

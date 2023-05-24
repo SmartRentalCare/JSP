@@ -4,18 +4,45 @@ import "../style.css";
 
 export default function List() {
   const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(9);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/main")
-      .then((response) => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/main?page=${currentPage}&limit=${pageSize}`
+        );
         setPosts(response.data);
-      })
-      .catch((error) => {
+        setTotalPages(response.data);
+      } catch (error) {
         console.error(error);
-      });
-  }, []);
+      }
+    };
+    fetchPosts();
+  }, [currentPage, pageSize]);
 
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+  useEffect(() => {
+    const fetchTotalPostsCount = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/list/count");
+        const totalPostsCount = response.data;
+        const totalPages = Math.ceil(totalPostsCount / pageSize);
+        setTotalPages(totalPages);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchTotalPostsCount();
+  }, [pageSize]);
   return (
     <div>
       <div className="card_list">
@@ -33,6 +60,12 @@ export default function List() {
                 </div>
               </div>
             ))}
+          <div>
+            {currentPage > 1 && <button onClick={handlePrevPage}>이전</button>}
+            {currentPage < totalPages && (
+              <button onClick={handleNextPage}>다음</button>
+            )}
+          </div>
         </div>
       </div>
     </div>
