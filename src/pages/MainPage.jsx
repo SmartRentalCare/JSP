@@ -11,16 +11,18 @@ import Click from "./Click";
 //import { useSelector } from "react-redux";
 export default function MainPage() {
   //const userID = useSelector((state) => state.userID);
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
   const handleSearch = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/main/search", {
-        keyword: searchKeyword,
+      await axios.post("http://localhost:3001/main/search", {
+        keyword: keyword,
       });
+      const response = await axios.get(
+        `http://localhost:3001/main/search?keyword=${keyword}`
+      );
       setSearchResult(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -41,8 +43,8 @@ export default function MainPage() {
             <div className="input_box">
               <input
                 type="text"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
                 placeholder="차량번호(4자리)"
               />
               <button onClick={handleSearch}>

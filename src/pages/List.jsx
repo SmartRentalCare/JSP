@@ -4,9 +4,9 @@ import "../style.css";
 
 export default function List() {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
-  const [pageSize, setPageSize] = useState(9);
+  const pageSize = 9;
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -21,11 +21,7 @@ export default function List() {
       }
     };
     fetchPosts();
-  }, [currentPage, pageSize]);
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
+  }, [currentPage]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -47,6 +43,11 @@ export default function List() {
     <div>
       <div className="card_list">
         <div className="card">
+          <div>
+            {currentPage < totalPages && (
+              <button onClick={handleNextPage}>다음</button>
+            )}
+          </div>
           {posts &&
             posts.map((post) => (
               <div key={post.id} className="item item_1">
@@ -60,12 +61,6 @@ export default function List() {
                 </div>
               </div>
             ))}
-          <div>
-            {currentPage > 1 && <button onClick={handlePrevPage}>이전</button>}
-            {currentPage < totalPages && (
-              <button onClick={handleNextPage}>다음</button>
-            )}
-          </div>
         </div>
       </div>
     </div>

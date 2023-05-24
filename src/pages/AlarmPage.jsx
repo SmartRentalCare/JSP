@@ -9,7 +9,7 @@ export default function MainPage() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/alarm")
+      .get("http://localhost:3001/detection")
       .then((response) => {
         setPosts(response.data);
       })
