@@ -4,13 +4,9 @@ const arduinoDAO = require('../model/arduinoDAO');
 
 async function arduinoPost(req, res) {
     try {
-        const result = req.qeury.result;
+        const result = req.params.result;
 
-        //result mod (123허1234)
-        const carInfo = result.substr(0, 7);
-        const date = result.substr(8, 16);
-        const kind = result.substr(17,)
-        const density = "";
+        const abc = result.split("_");
 
         const parameters = { carInfo, date, kind, density };
         const db_data = await arduinoDAO.dataInsert(parameters);
