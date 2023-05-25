@@ -17,6 +17,8 @@ const cookieParser = require('cookie-parser');
 const authRouter = require("./routes/authRouter");
 const mainRouter = require("./routes/mainRouter");
 const arduinoRouter = require("./routes/arduinoRouter");
+const addinfoRouter = require("./routes/addinfoRouter");
+const detectionRouter = require("./routes/detectionRouter");
 
 app.set('views', path.join(__dirname, '../front/src/pages'));
 app.set('view engine', 'ejs');
@@ -27,6 +29,8 @@ app.use(cookieParser());
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
+app.use("/client", addinfoRouter);
+app.use("/alarm", detectionRouter);
 
 app.use("/arduino", arduinoRouter);
 

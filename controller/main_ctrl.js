@@ -1,17 +1,7 @@
 'use strict';
 
 const mainDAO = require('../model/mainDAO');
-
-const paging = (currentPage, pageSize) => {
-    const default_start_page = 0;
-    const page_size = pageSize;
-    if (currentPage < 0 || !currentPage) currentPage = default_start_page;
-    let result = {
-        offset: (currentPage) * page_size,
-        limit: Number(page_size)
-    }
-    return result;
-}
+const paging = require('../middleware/paging');
 
 //main get with paging
 async function main(req, res) {
@@ -26,7 +16,6 @@ async function main(req, res) {
         };
 
         const db_data = await mainDAO.All_searchResult(parameters);
-        console.log(db_data);
 
         res.status(200).json(db_data);
     } 

@@ -6,17 +6,15 @@ const authDAO = require('../model/authDAO');
 async function signIn(req, res) {
     try {
         const token = req.cookies.user;
-        console.log("token: ", token)
         let userID = "";
 
         if (token == undefined) {
             return res.send('접근할수 없습니다.');
         }
         if (req.cookies.user !== undefined) {
-            console.log("로그인 정보 있음");
             userID = req.cookies['user'];
         }
-        // res.send({ result: userID });
+        
         res.render('/sign/in', { result: userID });
     } 
     catch (err) {
