@@ -15,6 +15,7 @@ async function detectionGet(req, res) {
         };
 
         const db_data = await detectionDAO.All_detectionResult(parameters);
+        console.log(db_data);
 
         res.status(200).json(db_data);
     } 

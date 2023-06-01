@@ -20,7 +20,6 @@ async function addPost(req, res) {
         const parameters = { user, carNum, dateFormat };
 
         const db_data = await addinfoDAO.infoInsert(parameters);
-        console.log(db_data);
 
         res.send({ result: "Success"});
     }
