@@ -1,24 +1,30 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
 
-const LogoutButton = () => {
-  const logout = async () => {
-    try {
-      const response = await fetch("/auth/logout", {
-        method: "POST",
-        credentials: "include",
+export default function LogoutButton() {
+  const [message, setMessage] = useState("");
+
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:3001/logout", {
+        headers: {
+          "Content-Type": "application/json",
+          Authortization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessage(data.message);
+        localStorage.removeItem("token");
+      })
+      .catch((error) => {
+        console.log("로그아웃 중 에러:", error);
       });
-      if (response.ok) {
-        navigate("/auth/login");
-      } else {
-        throw new Error("로그아웃 실패");
-      }
-    } catch (error) {
-      console.error(error);
-    }
   };
-
-  const navigate = useNavigate;
-  return <button onClick={logout}>Logout</button>;
-};
-export default LogoutButton;
+  return (
+    <div className="logout">
+      <button onclick={handleLogout}>로그아웃</button>
+      <p>{message}</p>
+    </div>
+  );
+}
