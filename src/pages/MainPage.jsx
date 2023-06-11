@@ -1,32 +1,14 @@
 import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import { FaCheck } from "react-icons/fa";
 import LogoutButton from "./Logoutbutton";
-import axios from "axios";
 import List from "./List";
-
 import MovePage from "./MovePage";
 import Click from "./Click";
+import GoSearch from "./GoSearch";
+
 //import { useSelector } from "react-redux";
 export default function MainPage() {
-  //const userID = useSelector((state) => state.userID);
-  const [keyword, setKeyword] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-
-  const handleSearch = async () => {
-    try {
-      await axios.post("http://localhost:3001/main/search", {
-        keyword: keyword,
-      });
-      const response = await axios.get(
-        `http://localhost:3001/main/search?keyword=${keyword}`
-      );
-      setSearchResult(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <div>
       <div className="main_header">
@@ -35,38 +17,11 @@ export default function MainPage() {
 
       <div className="main">
         <div className="main_section">
+          <div className="search_box">
+            <h1 className="subtitle">고객리스트</h1>
+          </div>
           <div className="list">
             <List />
-          </div>
-          <div className="search_box">
-            <h1 className="subtitle">차량관리</h1>
-            <div className="input_box">
-              <input
-                type="text"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                placeholder="차량번호(4자리)"
-              />
-              <button onClick={handleSearch}>
-                <FaCheck className="search-icon" />
-              </button>
-
-              {searchResult.length > 0 ? (
-                <ul>
-                  {searchResult.map((post) => (
-                    <div key={post.id} className="searchKey">
-                      <div className="search_element">
-                        <p>{post.user}</p>
-                        <p>{post.carNum}</p>
-                        <p>{post.rentDay}</p>
-                      </div>
-                    </div>
-                  ))}
-                </ul>
-              ) : (
-                <div>검색 결과가 없습니다.</div>
-              )}
-            </div>
           </div>
         </div>
 
@@ -84,6 +39,9 @@ export default function MainPage() {
               </div>
               <div className="move">
                 <Click />
+              </div>
+              <div className="move">
+                <GoSearch />
               </div>
             </div>
           </div>

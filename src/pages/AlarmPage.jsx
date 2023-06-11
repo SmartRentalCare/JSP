@@ -7,9 +7,13 @@ import Click from "./Click";
 
 export default function AlarmPage() {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
-  const pageSize = 4;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(9);
+  const pageSize = 9;
+  const indexOfLastItem = currentPage * totalPages;
+  const indexOfFirstItem = indexOfLastItem - totalPages;
+  const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -28,6 +32,9 @@ export default function AlarmPage() {
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
+  };
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
   };
   useEffect(() => {
     const fetchTotalPostsCount = async () => {
@@ -53,22 +60,30 @@ export default function AlarmPage() {
           <div className="car_section">
             <h2 className="subtitle">알림</h2>
             <div>
-              {currentPage < totalPages && (
-                <button onClick={handleNextPage}>다음</button>
-              )}
-            </div>
-            {posts &&
-              posts.map((post) => (
-                <div key={post.id} className="car_list">
-                  <div className="car_element">
-                    <p>{post.user}</p> {/*고객이름*/}
-                    <p>{post.carNum}</p> {/*차량번호*/}
-                    <p>{post.detection}</p> {/*알림발생날짜*/}
-                    <p>{post.kind}</p> {/*알림종류*/}
-                    <p>{post.density}</p> {/*농도*/}
+              {currentItems &&
+                currentItems.map((post) => (
+                  <div key={post.id} className="car_list">
+                    <div className="car_element">
+                      <p>{post.user}</p> {/*고객이름*/}
+                      <p>{post.carNum}</p> {/*차량번호*/}
+                      <p>{post.detection}</p> {/*알림발생날짜*/}
+                      <p>{post.kind}</p> {/*알림종류*/}
+                      <p>{post.density}</p> {/*농도*/}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
+            <div>
+              <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                Previous Page
+              </button>
+              <button
+                onClick={handleNextPage}
+                disabled={indexOfLastItem >= posts.length}
+              >
+                Next Page
+              </button>
+            </div>
           </div>
         </div>
 

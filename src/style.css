@@ -170,6 +170,7 @@ li {
 }
 .search_box {
   top: 0%;
+
   margin-top: 12px;
   width: 70%;
   left: 15%;
@@ -198,7 +199,8 @@ li {
   margin: 5px;
   background-color: white;
 }
-
+.input_box {
+}
 .main_article {
   position: absolute;
   right: 4%;
@@ -283,7 +285,7 @@ form {
   background-color: rgb(145, 189, 216);
 }*/
 .list {
-  top: 25%;
+  top: 15%;
   margin-top: 12px;
   width: 75%;
   left: 12%;
@@ -295,9 +297,8 @@ form {
   margin-top: 10%;
 }
 .search_element {
-  margin-top: 12px;
-  width: 70%;
-  left: 15%;
+  width: 100%;
+  left: 0%;
   max-width: 1500px;
   position: absolute;
   display: flex;
@@ -306,9 +307,9 @@ form {
 .searchKey {
   margin-bottom: 10%;
   display: flex;
-  justify-content: space-between;
 }
-
+.search_list {
+}
 /* List.jsx */
 table {
   width: 100%;
@@ -334,8 +335,8 @@ td {
   border-radius: 10px;
   border: 1px solid rgba(145, 144, 144, 0.64);
   width: 30%;
-  margin-bottom: 10px;
-  height: 50%;
+  margin-bottom: 30px;
+  height: 60%;
 }
 
 /* footer.jsx */
