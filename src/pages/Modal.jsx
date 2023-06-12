@@ -36,11 +36,11 @@ export default function MainPage() {
   }
   const handleSearch = async () => {
     try {
-      await axios.post("http://localhost:3001/main/search", {
+      await axios.post("http://localhost:3001/search", {
         keyword: keyword,
       });
       const response = await axios.get(
-        `http://localhost:3001/main/search?keyword=${keyword}`
+        `http://localhost:3001/search?keyword=${keyword}`
       );
       setPosts(response.data);
       setSearchResult(response.data);
@@ -94,25 +94,6 @@ export default function MainPage() {
                   <div>검색 결과가 없습니다.</div>
                 )}
               </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="main_article">
-          <div className="users">
-            <div className="users_name">
-              <p className="name">회원님, 안녕하세요!</p>
-            </div>
-            <div className="users_element">
-              <div className="logout">
-                <LogoutButton />
-              </div>
-              <div className="move">
-                <MovePage />
-              </div>
-              <div className="move">
-                <Click />
-              </div>
             </div>
           </div>
         </div>

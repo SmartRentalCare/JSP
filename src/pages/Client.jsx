@@ -88,22 +88,6 @@ export default function Client() {
             </form>
           </div>
         </div>
-
-        <div className="main_article">
-          <div className="users">
-            <div className="users_name">
-              <p className="name">회원님, 안녕하세요!</p>
-            </div>
-            <div className="users_element">
-              <div className="logout">
-                <LogoutButton />
-              </div>
-              <div className="move">
-                <MovePage />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="footer">
         <Footer />

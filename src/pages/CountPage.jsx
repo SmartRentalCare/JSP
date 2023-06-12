@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import LogoutButton from "./Logoutbutton";
 import axios from "axios";
-import Click from "./Click";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
-export default function AlarmPage() {
+export default function CountPage() {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const pageSize = 6;
@@ -33,7 +31,6 @@ export default function AlarmPage() {
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
-
   return (
     <div>
       <div className="main_header">
@@ -43,7 +40,7 @@ export default function AlarmPage() {
       <div className="main">
         <div className="main_section">
           <div className="car_section">
-            <h2 className="subtitle">누적현황</h2>
+            <h2 className="subtitle">누적횟수초과</h2>
 
             <div>
               <table>
@@ -51,9 +48,8 @@ export default function AlarmPage() {
                   <tr className="car_names">
                     <th>이름</th>
                     <th>차량번호</th>
-                    <th>감지날짜</th>
-                    <th>종류</th>
-                    <th>농도</th>
+
+                    <th>초과횟수</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -62,9 +58,7 @@ export default function AlarmPage() {
                       <tr key={post.id} className="car_list">
                         <td>{post.user}</td> {/*고객이름*/}
                         <td>{post.carNum}</td> {/*차량번호*/}
-                        <td>{post.detection}</td> {/*알림발생날짜*/}
-                        <td>{post.kind}</td> {/*알림종류*/}
-                        <td>{post.density}</td> {/*농도*/}
+                        <td>{post.number}</td> {/*누적횟수*/}
                       </tr>
                     ))}
                 </tbody>
