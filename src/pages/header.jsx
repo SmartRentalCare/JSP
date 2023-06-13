@@ -16,9 +16,7 @@ export default function header() {
 
         <nav className="nav">
           <div className="nav_element">
-            <a href="/main">
-              <FaHome className="header-icon" />
-            </a>
+            <a href="/modal">차량검색</a>
             <a href="/client">고객등록</a>
             <a href="/alarm">누적현황</a>
             <a href="/count">누적횟수초과</a>

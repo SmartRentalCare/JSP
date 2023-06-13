@@ -310,10 +310,6 @@ form {
   display: flex;
   justify-content: space-between;
 }
-.searchKey {
-  margin-bottom: 10%;
-  display: flex;
-}
 
 /* List.jsx */
 
@@ -449,4 +445,8 @@ td {
   cursor: pointer;
   font-size: 14px;
   color: #4e4e4eab;
+}
+/*Modal.jsx */
+.search_table {
+  margin-top: 5%;
 }

@@ -77,23 +77,31 @@ export default function MainPage() {
               <button onClick={handleReset}>
                 <FaRedoAlt className="search-icon" />
               </button>
-              <ul className="search_list">
-                {searchResult.length > 0 ? (
-                  <ul>
+            </div>
+            <div>
+              {searchResult.length > 0 ? (
+                <table className="search_table">
+                  <thead>
+                    <tr className="search_names">
+                      <th>사용자</th>
+                      <th>차량번호</th>
+                      <th>렌트날짜</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
                     {searchResult.map((post) => (
-                      <div key={post.id} className="searchKey">
-                        <div className="search_element">
-                          <p>{post.user}</p>
-                          <p>{post.carNum}</p>
-                          <p>{post.rentDay}</p>
-                        </div>
-                      </div>
+                      <tr key={post.id} className="searchKey">
+                        <td>{post.user}</td>
+                        <td>{post.carNum}</td>
+                        <td>{post.rentDay}</td>
+                      </tr>
                     ))}
-                  </ul>
-                ) : (
-                  <div>검색 결과가 없습니다.</div>
-                )}
-              </ul>
+                  </tbody>
+                </table>
+              ) : (
+                <div>검색 결과가 없습니다.</div>
+              )}
             </div>
           </div>
         </div>
