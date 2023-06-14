@@ -14,8 +14,9 @@ app.use(cors(corsOptions));
 
 const cookieParser = require('cookie-parser');
 
-const authRouter = require("./routes/authRouter");
 const mainRouter = require("./routes/mainRouter");
+const authRouter = require("./routes/authRouter");
+const searchRouter = require("./routes/searchRouter");
 const arduinoRouter = require("./routes/arduinoRouter");
 const addinfoRouter = require("./routes/addinfoRouter");
 const detectionRouter = require("./routes/detectionRouter");
@@ -29,6 +30,7 @@ app.use(cookieParser());
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
+app.use("/search", searchRouter);
 app.use("/client", addinfoRouter);
 app.use("/alarm", detectionRouter);
 

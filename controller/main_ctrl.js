@@ -7,7 +7,7 @@ const paging = require('../middleware/paging');
 async function main(req, res) {
     try {
         let currentPage = req.query.page;
-        const pageSize = 9;
+        const pageSize = 12;
         const page = paging(currentPage, pageSize);
 
         const parameters = {
@@ -16,40 +16,10 @@ async function main(req, res) {
         };
 
         const db_data = await mainDAO.All_searchResult(parameters);
+        console.log(db_data)
 
         res.status(200).json(db_data);
     } 
-    catch (err) {
-        console.log(err);
-        res.send("Failed");
-    }
-}
-
-//main search get
-async function mainGet(req, res) {
-    try {
-        const parameters = req.query.keyword;
-
-        const db_data = await mainDAO.searchResult(parameters);
-
-        res.status(200).json(db_data);
-    }
-    catch (err) {
-        console.log(err);
-        res.send("Failed");
-    }
-}
-
-//main search post
-async function mainPost(req, res) {
-    try {
-        const parameters = req.body.keyword;
-
-        const db_data = await mainDAO.searchResult(parameters);
-
-        if(db_data) res.send({ result: "일치하는 차량번호가 있습니다."});
-        else res.send({ result: "일치하는 차량번호가 없습니다."});
-    }
     catch (err) {
         console.log(err);
         res.send("Failed");
@@ -78,8 +48,6 @@ async function detectionPost(req, res) {
 
 module.exports = {
     main,
-    mainGet,
-    mainPost,
     detectionGet,
     detectionPost
 }

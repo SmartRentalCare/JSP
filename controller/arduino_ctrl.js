@@ -1,6 +1,7 @@
 'use strict';
 
 const arduinoDAO = require('../model/arduinoDAO');
+const detectionDAO = require('./detection_ctrl');
 
 //[A202303250835_4_001]
 async function arduinoPost(req, res) {
