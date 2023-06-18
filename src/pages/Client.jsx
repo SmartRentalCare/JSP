@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import axios from "axios";
-import LogoutButton from "./Logoutbutton";
-
-import MovePage from "./MovePage";
 
 export default function Client() {
   const [user, setUser] = useState("");
   const [carNum, setCarNum] = useState("");
-  const [carColor, setCarColor] = useState("");
+
   const [date, setDate] = useState("");
 
   const handleSubmit = async (e) => {
@@ -18,13 +15,16 @@ export default function Client() {
       const response = await axios.post("http://localhost:3001/client", {
         user,
         carNum,
-        carColor,
         date,
       });
       console.log("입력완료", response.data);
+      window.alert("입력이 완료되었습니다.");
     } catch (error) {
       console.error(error);
     }
+    setCarNum("");
+    setDate("");
+    setUser("");
   };
 
   return (
@@ -62,19 +62,9 @@ export default function Client() {
                 <div className="input_client">
                   <input
                     type="text"
-                    value={carColor}
-                    className="car_color"
-                    placeholder="차량색상"
-                    onChange={(e) => setCarColor(e.target.value)}
-                  />
-                </div>
-
-                <div className="input_client">
-                  <input
-                    type="text"
                     value={date}
                     className="date_use"
-                    placeholder="계약날짜"
+                    placeholder="계약날짜(YYYYMMDD)"
                     onChange={(e) => setDate(e.target.value)}
                   />
                 </div>

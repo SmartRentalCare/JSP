@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+//zximport React, { useState } from "react";
 import axios from "axios";
 
 export default function LogoutButton() {
-  const [message, setMessage] = useState("");
-
   const handleLogout = () => {
+    const token = localStorage.getItem("token");
+
     axios
-      .post("http://localhost:3001/logout", {
-        headers: {
-          "Content-Type": "application/json",
-          Authortization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
+      .get("http://localhost:3001/auth/logout", { token })
+      .then((response) => {
+        console.log(token);
+        console.log(response.data);
         localStorage.removeItem("token");
+        window.location.href = "/auth/sign/in";
       })
       .catch((error) => {
-        console.log("로그아웃 중 에러:", error);
+        console.error(error);
       });
   };
+
   return (
     <div className="logout">
-      <button onclick={handleLogout}>로그아웃</button>
-      <p>{message}</p>
+      <button onClick={handleLogout}>로그아웃</button>
     </div>
   );
 }

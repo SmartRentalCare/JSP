@@ -13,7 +13,7 @@ export default function CountPage() {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/alarm/detection?page=${currentPage}&limit=${pageSize}`
+          `http://localhost:3001/alarm/detection_Count?page=${currentPage}&limit=${pageSize}`
         );
         setPosts(response.data);
         console.log(response.data);
@@ -58,7 +58,7 @@ export default function CountPage() {
                       <tr key={post.id} className="car_list">
                         <td>{post.user}</td> {/*고객이름*/}
                         <td>{post.carNum}</td> {/*차량번호*/}
-                        <td>{post.number}</td> {/*누적횟수*/}
+                        <td>{post.cnt}</td> {/*누적횟수*/}
                       </tr>
                     ))}
                 </tbody>

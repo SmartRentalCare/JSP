@@ -114,13 +114,12 @@ li {
   float: left;
 }
 .main_logo {
-  margin-top: 100px;
+  margin-top: 80px;
   font-size: 50px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(138, 138, 138, 0.322);
 }
 .logo_sub {
   font-size: 15px;
+  margin-bottom: 5%;
 }
 .header {
   background-color: white;
@@ -138,7 +137,9 @@ li {
   box-shadow: 0 0 40px rgb(206, 207, 208);
 }
 .nav {
-  padding-bottom: 35px;
+  padding-top: 35px;
+  border-top: 1px solid rgba(166, 164, 164, 0.4);
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(166, 164, 164, 0.4);
 }
 .logout_button {
@@ -146,6 +147,9 @@ li {
 }
 .header-icon {
   margin-top: 2px;
+}
+.logout_area {
+  float: right;
 }
 
 /* MainPage.jsx */
@@ -166,9 +170,8 @@ li {
 .main_section {
   border: 1px solid rgba(138, 138, 138, 0.322);
   position: absolute;
-
   left: 4%;
-  top: 3%;
+  top: 5%;
   bottom: 0;
   width: 88%;
   max-width: 1200px;
@@ -438,13 +441,13 @@ td {
 /*logout.jsx */
 
 .logout > button {
-  border: 1px;
-  padding: 10px;
-  border-radius: 25px;
-  background-color: rgba(153, 200, 229, 0.325);
+  border: none;
+  border-radius: 20px;
+  background-color: white;
   cursor: pointer;
-  font-size: 14px;
-  color: #4e4e4eab;
+  font-size: 17px;
+
+  color: rgb(145, 189, 216);
 }
 /*Modal.jsx */
 .search_table {

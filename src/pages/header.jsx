@@ -1,7 +1,8 @@
 //import React, { useState } from "react";
-import { FaHome } from "react-icons/fa";
+
 //import LogoutButton from "../components/Logoutbutton";
 import "../style.css";
+import LogoutButton from "./Logoutbutton";
 
 export default function header() {
   return (
@@ -20,6 +21,8 @@ export default function header() {
             <a href="/client">고객등록</a>
             <a href="/alarm">누적현황</a>
             <a href="/count">누적횟수초과</a>
+
+            <LogoutButton />
           </div>
         </nav>
       </header>
