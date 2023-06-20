@@ -16,7 +16,6 @@ async function searchGet(req, res) {
         };
 
         const db_data = await searchDAO.searchResultGet(parameters);
-        console.log(db_data)
 
         res.status(200).json(db_data);
     } 
