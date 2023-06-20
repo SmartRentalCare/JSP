@@ -6,7 +6,7 @@ export default function LogoutButton() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:3001/auth/logout", { token })
+      .get("http://localhost:8081/auth/logout", { token })
       .then((response) => {
         console.log(token);
         console.log(response.data);

@@ -139,7 +139,7 @@ li {
 .nav {
   padding-top: 35px;
   border-top: 1px solid rgba(166, 164, 164, 0.4);
-  padding-bottom: 10px;
+  padding-bottom: 35px;
   border-bottom: 1px solid rgba(166, 164, 164, 0.4);
 }
 .logout_button {
@@ -452,4 +452,7 @@ td {
 /*Modal.jsx */
 .search_table {
   margin-top: 5%;
+}
+table > .modal_button {
+  float: center;
 }

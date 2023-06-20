@@ -15,7 +15,7 @@ export default function AlarmPage() {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/alarm/detection?page=${currentPage}&limit=${pageSize}`
+          `http://localhost:8081/alarm/detection?page=${currentPage}&limit=${pageSize}`
         );
         setPosts(response.data);
         console.log(response.data);
@@ -24,6 +24,11 @@ export default function AlarmPage() {
       }
     };
     fetchPosts();
+    const interval = setInterval(fetchPosts, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [currentPage]);
 
   const handleNextPage = () => {

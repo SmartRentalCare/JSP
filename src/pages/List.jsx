@@ -12,7 +12,7 @@ export default function List() {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/main?page=${currentPage}&limit=${pageSize}`
+          `http://localhost:8081/main?page=${currentPage}&limit=${pageSize}`
         );
         setPosts(response.data);
       } catch (error) {

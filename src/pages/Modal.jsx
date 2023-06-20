@@ -2,56 +2,42 @@ import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { FaCheck, FaRedoAlt } from "react-icons/fa";
-import LogoutButton from "./Logoutbutton";
+
 import axios from "axios";
-import MovePage from "./MovePage";
-import Click from "./Click";
+
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 export default function MainPage() {
   const [posts, setPosts] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const pageSize = 12;
+  const totalPages = posts.length;
 
   const handleReset = () => {
     setKeyword("");
     setSearchResult([]);
   };
-  {
-    /*}
-  const posts = [
-    { id: 1, user: "김채영", carNum: "101허1234", rentDay: "20220202" },
-    { id: 13, user: "김채영", carNum: "101허1234", rentDay: "20220202" },
-    { id: 2, user: "김채영", carNum: "101허1234", rentDay: "20220202" },
-    { id: 3, user: "김채영", carNum: "101허1234", rentDay: "20220202" },
-    { id: 4, user: "김채영", carNum: "101허1234", rentDay: "20220202" },
-    { id: 5, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 6, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 7, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 8, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 9, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 10, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 11, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-    { id: 12, user: "김채영", carNum: "101허 1234", rentDay: "20220202" },
-  ];*/
-  }
+
   const handleSearch = async () => {
     try {
-      await axios.post("http://localhost:3001/search", {
-        keyword: keyword,
-      });
       const response = await axios.get(
-        `http://localhost:3001/search?keyword=${keyword}`
+        `http://localhost:8081/search?keyword=${keyword}&page=${currentPage}&limit=${pageSize}`
       );
       setPosts(response.data);
       setSearchResult(response.data);
     } catch (error) {
       console.error(error);
     }
+  };
 
-    const filteredData = posts.filter((post) =>
-      post.carNum.toLowerCase().includes(keyword.toLowerCase())
-    );
-    setSearchResult(filteredData);
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
   };
 
   return (
@@ -98,6 +84,22 @@ export default function MainPage() {
                       </tr>
                     ))}
                   </tbody>
+                  <div className="modal_button">
+                    <button
+                      className="PreviousPage"
+                      onClick={handlePrevPage}
+                      disabled={currentPage === 0}
+                    >
+                      <FaAngleLeft />
+                    </button>
+                    <button
+                      className="NextPage"
+                      onClick={handleNextPage}
+                      disabled={totalPages < 6}
+                    >
+                      <FaAngleRight />
+                    </button>
+                  </div>
                 </table>
               ) : (
                 <div>검색 결과가 없습니다.</div>

@@ -4,7 +4,7 @@ export default function Browser() {
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3001");
+    const ws = new WebSocket("ws://localhost:8081");
     ws.open = () => {
       console.log("success");
     };

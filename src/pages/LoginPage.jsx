@@ -20,7 +20,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/auth/sign/in", {
+      .post("http://localhost:8081/auth/sign/in", {
         adminID: adminID,
         adminPW: adminPW,
       })
@@ -32,7 +32,7 @@ export default function LoginPage() {
 
   const onSilentRefresh = () => {
     axios
-      .post("http://localhost:3001/auth/revise_check")
+      .post("http://localhost:8081/auth/revise_check_post")
       .then(onLoginSuccess)
       .catch((error) => {
         // ... 로그인 실패 처리
@@ -45,7 +45,6 @@ export default function LoginPage() {
     window.location.href = "/main";
     // accessToken 설정
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-
     // accessToken 만료하기 1분 전에 로그인 연장
     setTimeout(onSilentRefresh, JWT_EXPIRRY_TIME);
   };
