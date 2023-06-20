@@ -16,7 +16,6 @@ async function main(req, res) {
         };
 
         const db_data = await mainDAO.All_searchResult(parameters);
-        console.log(db_data)
 
         res.status(200).json(db_data);
     } 
@@ -26,28 +25,6 @@ async function main(req, res) {
     }
 }
 
-async function detectionGet(req, res) {
-    try {
-
-    }
-    catch (err) {
-        console.log(err);
-        res.send("Failed");
-    }
-}
-
-async function detectionPost(req, res) {
-    try {
-
-    }
-    catch (err) {
-        console.log(err);
-        res.send("Failed");
-    }
-}
-
 module.exports = {
-    main,
-    detectionGet,
-    detectionPost
+    main
 }

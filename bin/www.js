@@ -4,7 +4,7 @@ const FileStore = require('session-file-store')(session);
 
 const app = require('../app');
 const http = require('http');
-const port = 3001;
+const port = 8081;
 
 app.use(session({
     secret: 'blackzat',

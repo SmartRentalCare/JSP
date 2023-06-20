@@ -16,6 +16,7 @@ async function searchGet(req, res) {
         };
 
         const db_data = await searchDAO.searchResultGet(parameters);
+        console.log(db_data)
 
         res.status(200).json(db_data);
     } 
@@ -30,7 +31,6 @@ async function searchPost(req, res) {
         const parameters = req.body.keyword;
 
         const db_data = await searchDAO.searchResultPost(parameters);
-        console.log("db_data", db_data)
 
         if(db_data) res.send({ result: "일치하는 결과가 있습니다." });
         else res.send({ result: "일치하는 결과가 없습니다."});
